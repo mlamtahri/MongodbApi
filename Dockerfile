@@ -1,5 +1,5 @@
 # Build stage
-FROM microsoft/dotnet:2.2.100-sdk-alpine3.8 as build
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2.203-alpine3.9 as build
 
 ENV DOTNET_CLI_TELEMETRY_OPTOUT true
 
@@ -9,7 +9,7 @@ WORKDIR /src
 RUN dotnet publish -c Release
 
 # Run stage
-FROM microsoft/dotnet:2.2.0-aspnetcore-runtime-alpine3.8 as run
+FROM mcr.microsoft.com/dotnet/core/runtime:2.2.4-alpine3.9 as run
 
 RUN apk update && apk upgrade --no-cache
 
